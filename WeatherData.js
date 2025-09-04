@@ -13,10 +13,13 @@ export class GetWeather {
 
     async fetchWeatherData() {
         this.weatherData = await getAPIResponse(this.inputLocation);
-console.log(this.weatherData)
+        // console.log(this.weatherData)
 
         if ('error' in this.weatherData) {
             this.errorMsg = this.weatherData.error;
+        }
+        else {
+            this.errorMsg = false;
         }
     }
 

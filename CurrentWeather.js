@@ -40,6 +40,7 @@ export class UpdateCurrentDOM {
 
     updateDOMContent(weatherObj) {
         if (weatherObj.errorMsg) {
+            
             this.icon.textContent = "wrong_location"; // 或預設 icon
             // this.datetime.textContent = "N/A";
             // this.time.textContent = "N/A";
@@ -57,7 +58,9 @@ export class UpdateCurrentDOM {
 
             return; // <- 非常重要，避免後面覆蓋
         }
-        
+        weatherObj.errorMsg = false;
+
+        // console.log("==========================================",weatherObj.errorMsg)
         this.icon.textContent = weatherObj.current_icon;
         this.datetime.textContent = weatherObj.current_datetime;
         this.time.textContent = weatherObj.current_time;

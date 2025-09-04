@@ -14,7 +14,7 @@ body {
 
 
     /*-------樣式-------*/
-    background-color: rgb(101, 101, 101);
+    background-color: rgb(255, 255, 255);
     background-image: url('https://picsum.photos/1920/1080');
     background-size: cover;
     background-position: center;
@@ -68,6 +68,9 @@ body::-webkit-scrollbar {
         /*-------輸入內容 文字樣式-------*/
 
         color: rgb(60, 60, 60, 1);
+
+
+        filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.3));
         font-family: "Kaisei Decol", "Playfair Display", "Noto Serif TC", serif;
         font-optical-sizing: auto;
         font-size: 1rem;
@@ -81,6 +84,12 @@ body::-webkit-scrollbar {
         background-color: rgba(255, 255, 255, 0.3);
     }
 
+    input::placeholder {
+        color: rgba(255, 255, 255, 0.4);
+        filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.2));
+        opacity: 1;
+    }
+
     button {
         /*-------自身排版-------*/
         padding: 0 1rem;
@@ -90,17 +99,19 @@ body::-webkit-scrollbar {
         outline: none;
 
         span {
-            color: rgb(255, 255, 255, 0.5);
             font-size: 2rem;
             font-weight: 500;
             display: flex;
             justify-content: center;
+
+            color: rgba(255, 255, 255, 0.4);
+            filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.5));
         }
     }
 
     button:active {
         span {
-            color: rgba(255, 255, 255, 0.3);
+            color: rgba(0, 0, 0, 0.1);
         }
     }
 }
