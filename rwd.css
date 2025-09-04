@@ -1,0 +1,181 @@
+/* 平板以下 (<=1024px) */
+@media (max-width: 1080px) {
+
+
+    html {
+        font-size: clamp(10px, 1.5vw, 18px);
+    }
+
+
+    body {
+        /* 固定背景，但在ios系統支援度不好*/
+        background-attachment: fixed;
+    }
+
+
+    /* ================= 主空間設定 ================= */
+
+    main {
+        width: fit-content;
+        min-width: 70%;
+        max-width: 80%;
+        margin: 1rem auto;
+    }
+
+
+    /* ================= 及時天氣，主要資訊 ================= */
+    .current-main-info {
+        /*-------自身排版-------*/
+        padding: 3rem 3rem;
+
+        /*-------子空間-------*/
+        display: grid;
+        /* grid-template-columns: 1fr 1fr; */
+        align-items: center;
+        justify-items: center;
+
+
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 2rem 3rem 2fr 1fr 1fr;
+
+
+        [data-current-info="icon"] {
+
+            grid-area: 3 / 1 / 4 / 3;
+        }
+
+
+        [data-current-info="datetime"] {
+            grid-area: 1 / 1 / 2/ 2;
+            align-self: self-start;
+            justify-self: start;
+        }
+
+        [data-current-info="time"] {
+            align-self: self-start;
+            justify-self: start;
+            grid-area: 2 / 1 / 3 / 2;
+        }
+
+        [data-current-info="location"] {
+            align-self: self-start;
+            justify-self: self-end;
+            grid-area: 1 / 2 / 3 / 3;
+        }
+
+        [data-current-info="temperature"] {
+            align-self: center;
+            justify-self: center;
+            grid-area: 4 / 1 / 5 / 3;
+        }
+
+        [data-current-info="conditions"] {
+            align-self: center;
+            justify-self: center;
+            grid-area: 5 / 1 / 6 / 3;
+        }
+    }
+
+    /* ================= 及時天氣，次要資訊 ================= */
+    .current-minor-info {
+        /*-------子空間-------*/
+        display: grid;
+        grid-template-columns: repeat(3, minmax(1rem, 1fr));
+        gap: 1rem;
+    }
+
+
+    /* ================= 預報天氣 ================= */
+    .today-forecast {
+        padding-bottom: 5rem;
+        /*-------子空間-------*/
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        /* grid-auto-rows: 15rem; */
+        gap: 1rem;
+    }
+
+    /* ================= 頁尾標籤 ================= */
+    .page_footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+    }
+
+    .logo_left {
+        position: relative;
+    }
+
+    .logo_right {
+        position: relative;
+
+    }
+}
+
+/* 手機以下 (<=768px) */
+@media (max-width: 768px) {
+
+    .current-main-info {
+        /*-------自身排版-------*/
+        padding: 3rem 3rem;
+
+        /*-------子空間-------*/
+        display: grid;
+        /* grid-template-columns: 1fr 1fr; */
+        align-items: center;
+        justify-items: center;
+
+
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 2rem 1fr 2fr 1fr 1fr;
+
+
+        [data-current-info="icon"] {
+
+            grid-area: 3 / 1 / 4 / 3;
+        }
+
+
+        [data-current-info="datetime"] {
+            grid-area: 1 / 1 / 2/ 2;
+            align-self: self-start;
+            justify-self: start;
+        }
+
+        [data-current-info="time"] {
+            align-self: self-start;
+            justify-self: self-end;
+            grid-area: 1 / 2 / 2 / 3;
+            font-size: 1.2rem;
+        }
+
+        [data-current-info="location"] {
+            align-self: center;
+            justify-self: center;
+            grid-area: 2 / 1 / 3 / 3;
+            font-size: 2rem;
+        }
+
+        [data-current-info="temperature"] {
+            align-self: center;
+            justify-self: center;
+            grid-area: 4 / 1 / 5 / 3;
+        }
+
+        [data-current-info="conditions"] {
+            align-self: center;
+            justify-self: center;
+            grid-area: 5 / 1 / 6 / 3;
+        }
+    }
+
+
+
+    .logo_left {
+        font-size: 2rem;
+    }
+
+    .logo_right {
+        font-size: 1rem;
+    }
+}
