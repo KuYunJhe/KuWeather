@@ -1,0 +1,79 @@
+.glass-material {
+    /* width: 90%; */
+    /* max-width: 50%; */
+    /* margin: 0 auto; */
+    /* border-radius: 1rem; */
+    /* padding: 10.5rem; */
+
+
+    /*----毛玻璃---*/
+    /* background-color: var(--color-glass-background); */
+    backdrop-filter: blur(10px);
+    /* border: solid rgba(255, 255, 255, 0.3); */
+    /* border-width: 0 1px 1px 1px; */
+    box-shadow: 2px 2px 1rem rgba(0, 0, 0, 0.1);
+    /*----毛玻璃---*/
+}
+
+.glass-material {
+    transition: transform 1s ease, box-shadow 0.6s ease;
+}
+
+.glass-material:hover {
+    transition: transform 0.6s ease, box-shadow 0.2s ease;
+    transform: translateY(-5px);
+    box-shadow: 2px 4px 2rem rgba(0, 0, 0, 0.2);
+}
+.glass-material:not(:hover) {
+    transition: transform 0.3s ease, box-shadow 0.2s ease;
+}
+
+
+/* Scrollbar glass component */
+.glass-material {
+    background: radial-gradient(47.2% 50% at 50.39% 88.37%,
+            rgba(255, 255, 255, 0.12) 0%,
+            rgba(255, 255, 255, 0) 100%),
+        rgba(255, 255, 255, 0.04);
+    position: relative;
+
+
+    transition: background 0.3s ease;
+    border-radius: 14px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.glass-material:hover {
+    background: radial-gradient(47.2% 50% at 50.39% 88.37%,
+            rgba(255, 255, 255, 0.12) 0%,
+            rgba(255, 255, 255, 0) 100%),
+        rgba(255, 255, 255, 0.08);
+}
+
+
+/* 製作邊框光暈*/
+.glass-material::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 1px;
+    background: linear-gradient(150deg,
+            rgba(255, 255, 255, 0.48) 16.73%,
+            rgba(255, 255, 255, 0.08) 30.2%,
+            rgba(255, 255, 255, 0.08) 68.2%,
+            rgba(255, 255, 255, 0.6) 81.89%);
+    border-radius: inherit;
+
+    /* 挖空內容區域，露出邊框範圍*/
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: xor;
+    -webkit-mask-composite: xor;
+
+    /* 因為設定 ::before ，阻止他被他被滑鼠點擊，避免遮蔽主要物件*/
+    pointer-events: none;
+}
+
+/* Scrollbar glass component */

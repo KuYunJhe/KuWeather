@@ -1,0 +1,344 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+
+}
+
+
+body {
+    /*-------自身排版-------*/
+    height: 100%;
+    min-height: 100vh;
+
+
+    /*-------樣式-------*/
+    background-color: rgb(101, 101, 101);
+    background-image: url('https://picsum.photos/1920/1080');
+    background-size: cover;
+    background-position: center;
+
+    /* 固定背景，但在ios系統支援度不好*/
+    background-attachment: fixed;
+
+
+    /*-------變數-------*/
+    --color-glass-background: rgba(255, 255, 255, 0.3);
+    --color-glass-font: rgba(255, 255, 255, 0.8);
+}
+
+/*------- 隱藏滑動測桿 -------*/
+body::-webkit-scrollbar {
+    width: 0;
+}
+
+
+
+/* ================= 搜尋欄 ================= */
+.search_header {
+    /*-------自身排版-------*/
+    /* padding: 1rem 0; */
+    width: auto;
+    margin: 3rem 0;
+
+    /*-------子空間-------*/
+    display: flex;
+    justify-content: center;
+}
+
+.search_input {
+    /*-------自身排版-------*/
+    width: 30rem;
+    padding: 0.5rem;
+    border-radius: 50rem;
+
+    /*-------子空間-------*/
+    display: flex;
+    justify-content: center;
+
+    input {
+        /*-------自身排版-------*/
+        flex-grow: 1;
+        padding-left: 1rem;
+        border-radius: 50rem;
+        border: none;
+        background-color: transparent;
+
+        /*-------輸入內容 文字樣式-------*/
+
+        color: rgb(60, 60, 60, 1);
+        font-family: "Kaisei Decol", "Playfair Display", "Noto Serif TC", serif;
+        font-optical-sizing: auto;
+        font-size: 1rem;
+        font-weight: 500;
+        font-style: normal;
+        line-height: 2rem;
+    }
+
+    input:focus {
+        outline: none;
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    button {
+        /*-------自身排版-------*/
+        padding: 0 1rem;
+        border-radius: 0 50rem 50rem 0;
+        background-color: transparent;
+        border: none;
+        outline: none;
+
+        span {
+            color: rgb(255, 255, 255, 0.5);
+            font-size: 2rem;
+            font-weight: 500;
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    button:active {
+        span {
+            color: rgba(255, 255, 255, 0.3);
+        }
+    }
+}
+
+/* ================= 主空間設定 ================= */
+main {
+    width: fit-content;
+    min-width: 50%;
+    max-width: 70%;
+    margin: 1rem auto;
+    border-radius: 1rem;
+
+
+
+    font-family: "Kaisei Decol", "Noto Serif TC", "Philosopher", "Playfair Display", serif;
+    /* font-weight: 500;
+    font-style: normal; */
+}
+
+
+.current-main-info,
+.current-minor-info {
+    margin: 1rem 0;
+}
+
+section {
+    margin: 3rem 0;
+}
+
+
+/* ================= 及時天氣，主要資訊 ================= */
+.current-main-info {
+    /*-------自身排版-------*/
+    padding: 4rem 2rem;
+
+    /*-------子空間-------*/
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+
+
+    [data-current-info="icon"]>span {
+        color: var(--color-glass-font);
+        font-size: 15rem;
+        font-weight: 500;
+
+
+        font-variation-settings:
+            'FILL' 1,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 40
+    }
+
+    .main-info-right-side {
+        width: 100%;
+        /*-------子空間-------*/
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: 2rem 1fr 1fr 1fr;
+        justify-self: start;
+        /* row-gap: 1rem; */
+        column-gap: 1rem;
+    }
+
+    .main-info-right-side>.main-info-item {
+        color: var(--color-glass-font);
+        font-weight: 400;
+    }
+
+    [data-current-info="datetime"] {
+        grid-area: 1 / 1 / 2/ 2;
+        align-self: self-start;
+        font-size: 1rem;
+    }
+
+    [data-current-info="time"] {
+        align-self: self-start;
+        grid-area: 2 / 1 / 3 / 2;
+        font-size: 2rem;
+    }
+
+    [data-current-info="location"] {
+
+        white-space: pre-line;
+        /* 讓字串有 \n 的位置換行*/
+
+        align-self: self-start;
+        justify-self: self-end;
+        grid-area: 2 / 2 / 3 / 3;
+        font-size: 2rem;
+    }
+
+    [data-current-info="temperature"] {
+        align-self: center;
+        grid-area: 3 / 1 / 4 / -1;
+        font-size: 5rem;
+    }
+
+    [data-current-info="conditions"] {
+        align-self: center;
+        grid-area: 4 / 1 / -1 / -1;
+        font-size: 2rem;
+    }
+
+
+}
+
+.current-main-info:hover {
+    /* transition: transform 0.6s ease, box-shadow 0.2s ease; */
+    transform: none;
+    box-shadow: 2px 2px 1rem rgba(0, 0, 0, 0.2);
+}
+
+/* ================= 及時天氣，次要資訊 ================= */
+.current-minor-info {
+    /*-------子空間-------*/
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(1rem, 1fr));
+    gap: 1rem;
+
+    .minor-info-item {
+        padding: 1rem;
+
+        h3 {
+            justify-self: center;
+            color: var(--color-glass-font);
+            font-size: 1rem;
+            font-weight: 500;
+
+            font-variation-settings:
+                'FILL' 1,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 40
+        }
+
+        .minor-info-icon {
+            justify-self: center;
+            padding: 1rem;
+        }
+
+        .minor-info-icon>span {
+            color: var(--color-glass-font);
+            font-size: 3rem;
+
+            font-variation-settings:
+                'FILL' 1,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 40
+        }
+    }
+}
+
+
+/* ================= 預報天氣 ================= */
+.today-forecast {
+    padding-bottom: 5rem;
+    /*-------子空間-------*/
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* grid-auto-rows: 15rem; */
+    gap: 1rem;
+
+    color: (--color-glass-font);
+
+    .forecast-card {
+        padding: 1rem;
+
+        [data-forecast-info="time"] {
+            font-size: 2rem;
+            margin: 1rem 0;
+            justify-self: center;
+        }
+
+        [data-forecast-info="icon"] {
+            margin: 1rem 0;
+            justify-self: center;
+
+            span {
+                font-size: 5rem;
+                font-variation-settings:
+                    'FILL' 1,
+                    'wght' 400,
+                    'GRAD' 0,
+                    'opsz' 40
+            }
+        }
+
+        [data-forecast-info="weather"] {
+            font-size: 1rem;
+            margin: 0.5rem 0;
+            justify-self: center;
+        }
+
+        [data-forecast-info="temperature"] {
+            font-size: 1rem;
+            margin: 0.5rem 0;
+            justify-self: center;
+        }
+
+        [data-forecast-info="precipprob"] {
+            font-size: 1rem;
+            margin: 0.5rem 0;
+            justify-self: center;
+        }
+    }
+
+}
+
+/* ================= 頁尾標籤 ================= */
+.logo_left {
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+
+    pointer-events: none;
+
+    /*--------------*/
+    color: rgba(255, 255, 255, 0.4);
+    font-family: "Philosopher", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 3.5rem;
+}
+
+.logo_right {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+
+    pointer-events: none;
+    /*--------------*/
+    color: rgba(255, 255, 255, 0.4);
+    font-family: "Philosopher", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.5rem;
+}
