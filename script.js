@@ -18,7 +18,7 @@ class WeatherApp {
 
 
 
-    updateWeather(latLon, updateInterval = 100 * 60 * 1000) {
+    updateWeather(latLon, updateInterval = 1 * 60 * 1000) {
 
         // 如果還沒有建立過天氣資料
         if (!this.weather) {
